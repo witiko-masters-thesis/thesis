@@ -255,6 +255,17 @@ discussion grows longer, the probability of a comparison involving Nazis or
 Hitler approaches one.'' An immediate corollary would be that as an online
 discussion grows longer, the probability of a relevant contribution approaches
 zero. I was curious whether the datasets would confirm these observations.
+
+I used the subtask~A relevance judgements to estimate the probability mass
+function $\hat P(\textrm{at position }i\mid\textrm{relevant})$ for
+$i=1,2,\ldots,10$. Since there is a uniform number of comments at each
+position $i$, e.g. $\hat P(\textrm{at position }i) = 0.1$, we would expect
+$\hat P(\textrm{at position }i\mid\textrm{relevant})$ to be also uniform if
+the position of a comment and its relevance are independent.
+Figure~\ref{fig:dataset-relevance-analysis} shows that this expectation is
+false, and that there seems to be an inverse relationship between the position
+of a comment and its relevance.
+
 \begin{figure}[tb]
 \centering
 \includegraphics[trim={0cm 0cm 0cm 0cm}, scale=0.75]{figs/quality-evaluation-1}
@@ -1351,7 +1362,7 @@ corresponds to a single term, and each coordinate corresponds to the frequency
 of a term in our document. Consider the documents
 \begin{align*}
   d_1 &=\text{``When Antony found Julius Caesar dead''}, \text{and}\index{.d1@$d_1$} \\
-  d_2 &=\text{``I did enact Julius Caesar: I was killed i' the Capitol''}\index{.d2@$d_2$}.
+  d_2 &=\text{``I did enact Julius Caesar: I was killed i' the Capitol''}\index{.d2@$d_2$}
 \end{align*}
 represented in a basis $\{\bm\alpha_i\}_{i=1}^{14}$\index{.a@$\bm\alpha$|emph} of
 $\mathbb R^{14}$, where the basis vectors corresponds
@@ -1712,7 +1723,7 @@ nothing is known about the density of $\mathbf E$\index{.e@$\mathbf E$}, this
 does not mean that we cannot find a more compact representation of $\mathbf E$.
 Given a sparse matrix $\mathbf S$, we can generally find a permutation matrix
 $\mathbf P$\index{.p@$\mathbf P$|emph}, such that the Cholesky
-factor\index{Cholesky factorization} $\mathbf L$$\mathbf P$\index{.l@$\mathbf
+factor\index{Cholesky factorization} $\mathbf L$\index{.l@$\mathbf
 L$|emph}, where $\mathbf L\mathbf
 L\tran=\mathbf P\mathbf S\mathbf P\tran$, is also sparse.  Using basic facts
 about matrix transposition, we can derive $\mathbf E=\mathbf P^{-1}\mathbf L$
@@ -1724,7 +1735,7 @@ as follows:
   = \mathbf E\mathbf E\tran.
 \end{equation*}
 This allows us to store a permutation matrix $\mathbf P$ and a sparse matrix
-$\mathbf L$$\mathbf P$\index{.l@$\mathbf L$} instead of an arbitrarily dense
+$\mathbf L$\index{.l@$\mathbf L$} instead of an arbitrarily dense
 matrix $\mathbf E$. However, the existence of such a permutation matrix
 $\mathbf P$\index{.p@$\mathbf P$} is only guaranteed for matrices $\mathbf
 S$\index{.s@$\mathbf S$} of a specific structure, and even if such a $\mathbf
