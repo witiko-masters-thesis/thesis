@@ -2197,7 +2197,7 @@ S_{\textrm{lev}}$\index{.srel@$\mathbf  S_{\textrm  {rel}}$} and $\mathbf
 S_{\textrm{rel}}$\index{.slev@$\mathbf  S_{\textrm  {lev}}$} using a range of
 parameters described in section~\ref{sec:similarity-measures}. For the matrix
 $\mathbf S_{\textrm{lev}}$, I varied the parameters
-$C\in\{1,10,100\}$\index{.c@$C$} and
+$C\in\{1,10,100,1000\}$\index{.c@$C$} and
 $\theta_3\in\{0,0.2,0.4,0.6,0.8,1\}$\index{.h3@$\theta _3$}. For the matrix
 $\mathbf S_{\textrm{rel}}$, I varied the parameters
 $C\in\{1,10,100,1000,10000\},$\index{.c@$C$} \texttt{min\_count}%
@@ -2257,7 +2257,7 @@ baselines.
 and parameter $C$]{The \abbr{MAP}\index{map@\protect\abbr{MAP}}
   score plotted against the density of the matrix $\mathbf S_{\textrm{lev}}$
   \index{.slev@$\mathbf S_{\textrm{lev}}$} as we increase the parameter $C$
-  \index{.c@$C$} from the value of $1$ (leftmost) to the value of $100$
+  \index{.c@$C$} from the value of $1$ (leftmost) to the value of $1{,}000$
   (rightmost). For every dataset, the baseline \abbr{MAP} score
   corresponds to using the cosine as a measure of similarity between two
   documents. Baseline density corresponds to the default value of~$C$.}
@@ -2446,6 +2446,7 @@ $\mathbf S_{\textrm{rel}}$ & w2v.ql & soft & soft cosine & $1$ & $0$ & $5$ & $76
 $\mathbf S_{\textrm{rel}}$ & w2v.ql & soft & soft cosine & $100$ & $0.4$ & $5$ & $76.38$ \\
 $\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $100$ & $0.4$ & --- & $75.88$ \\
 $\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $100$ & $0.6$ & --- & $75.81$ \\
+$\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $1000$ & $0$ & --- & $75.80$ \\
 $\mathbf S_{\textrm{rel}}$ & w2v.ql & --- & inner product & $100$ & $0$ & $5$ & $75.79$ \\
 $\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $100$ & $0.2$ & --- & $75.72$ \\
 $\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $100$ & $0$ & --- & $75.72$ \\
@@ -2507,6 +2508,7 @@ Matrix $\mathbf S$ &
   \bfseries47.22 \\
 $\mathbf S_{\textrm{avg}}$ & w2v.ql & soft & soft cosine & $100$ & $0$ & $5$ & $46.04$ \\
 $\mathbf S_{\textrm{rel}}$ & w2v.ql & soft & soft cosine & $10$ & $0$ & $5$ & $45.67$ \\
+$\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $1000$ & $0$ & --- & $45.55$ \\
 $\mathbf S_{\textrm{rel}}$ & glove.common\_crawl & hard & soft cosine & $100$ & $0$ & $5$ & $45.49$ \\
 $\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $100$ & $0.6$ & --- & $45.35$ \\
 $\mathbf S_{\textrm{lev}}$ & --- & soft & soft cosine & $100$ & $0.0$ & --- & $45.34$ \\
