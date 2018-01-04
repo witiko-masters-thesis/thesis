@@ -29,7 +29,7 @@
 %%
 %% The following section sets up the metadata of the thesis.
 \thesissetup{
-    date          = \the\year/\the\month/\the\day,
+    date          = 2017/12/13,
     university    = mu,
     faculty       = fi,
     type          = mgr,
@@ -1798,11 +1798,12 @@ term should be also considered nearly identical by our model. We may use
 edit distance\index{edit distance} to formalize this intuition.
 \textcite{charletdamnati17} propose the following measure:\begin{equation}
   s_{ij} = \begin{cases}
-    1 & \text{if }i = j\textrm{, and} \\
-    \max(\theta_3, \theta_1\left(1-\frac{\textrm{Levenshtein}(i, j)}{\max(b_i, b_j)}\right)^{\theta_2}-\theta_3) & \index{.h1@$\theta_1$|emph}\index{.h2@$\theta_2$|emph}\index{.h3@$\theta _3$|emph}\textrm{otherwise,}
+    1 & \text{if }i = j\textrm{,} \\
+    0 & \text{if }\theta_1\left(1-\frac{\textrm{edit}(i, j)}{\max(b_i, b_j)}\right)^{\theta_2}\leq\theta_3\textrm{, and} \\
+    \theta_1\left(1-\frac{\textrm{edit}(i, j)}{\max(b_i, b_j)}\right)^{\theta_2} & \index{.h1@$\theta_1$|emph}\index{.h2@$\theta_2$|emph}\index{.h3@$\theta _3$|emph}\textrm{otherwise,}
   \end{cases}
 \end{equation}
-where $\textrm{Levenshtein}(i, j)$ is the edit distance between the terms
+where $\textrm{edit}(i, j)$ is the edit distance between the terms
 $i$ and $j$, $b_i$\index{.bi@$b_i$} and $b_j$ are the byte lengths of the terms $i$,
 and $\bm\theta$ are parameters whose optimal values on the
 subtask~B dev dataset are $\theta_1=1.8,\theta_2=5,$ and $\theta_3=0$ according
@@ -1828,12 +1829,16 @@ $C$\index{.c@$C$} highest values of $s_{ij}$. \textcite{charletdamnati17}
 reported using only $C=100$\index{.c@$C$} highest values of $s_{ij}$.
 
 \subsection{Synonymy}
-A facet of term similarity that will be of particular interest to us is
+Another facet of term similarity is
 synonymy. By building a term co-occurence\index{term co-occurence} model of a dataset, we can derive
 an unsupervised measure of synonymy by considering terms occuring in similar
 contexts “more synonymous” than terms occuring in different contexts.
 \textcite{charletdamnati17} propose the following measure:\begin{equation}
-  s_{ij} = \max(\theta_3, \langle\mathbf v_i / \Vert\mathbf v_i\Vert, \mathbf v_j / \Vert\mathbf v_j\Vert\rangle_{\mathbb X})^{\theta_5} - \theta_3,\index{.h3@$\theta _3$}\index{.h5@$\theta_5$|emph}
+  s_{ij} = \begin{cases}
+    1 & \text{if }i = j\textrm{,} \\
+    0 & \text{if }\langle\mathbf v_i / \Vert\mathbf v_i\Vert, \mathbf v_j / \Vert\mathbf v_j\Vert\rangle_{\mathbb X}\leq\theta_3\textrm{,\,and} \\
+    \langle\mathbf v_i / \Vert\mathbf v_i\Vert, \mathbf v_j / \Vert\mathbf v_j\Vert\rangle_{\mathbb X}^{\theta_5}\index{.h3@$\theta _3$}\index{.h5@$\theta_5$|emph}&\textrm{otherwise,}
+  \end{cases}
 \end{equation}
 where $\mathbf v_i, \mathbf v_j\in\mathbb X$ are the embeddings\index{term
 embedding} of the terms $i$ and $j$ in the inner-product space $\mathbb X$ produced by
@@ -1848,16 +1853,16 @@ according to the authors. I will refer to the resulting matrix as $\mathbf
 S_{\textrm{rel}}$\index{.srel@$\mathbf  S_{\textrm  {rel}}$|emph} for ease of
 reference.
 
-In the context of section~\ref{sec:similarity-complexity}, this formula gives
-us an opportunity to sparsify the matrix $\mathbf
-S_{\textrm{rel}}$\index{.srel@$\mathbf  S_{\textrm  {rel}}$} in an efficient
-manner. For each term $i$, we assign $s_{ij}\leftarrow 0$ for all but the
+In the context of section~\ref{sec:similarity-complexity}, this formula
+provides an opportunity to sparsify $\mathbf
+S_{\textrm{rel}}$\index{.srel@$\mathbf  S_{\textrm  {rel}}$} efficiently.
+For each term $i$, we assign $s_{ij}\leftarrow 0$ for all but the
 $C$\index{.c@$C$} nearest neighbors $\mathbf v_j$ of $\mathbf v_i$ in $\mathbb X$.
 \textcite{charletdamnati17} reported retrieving only $C=100$\index{.c@$C$}
 nearest neighbors in their experiments.
 
 Higher values of the parameter $\theta_3$\index{.h3@$\theta _3$} decrease the
-density of $S_{\textrm{rel}}$\index{.srel@$\mathbf  S_{\textrm  {rel}}$}. We may
+density of $\mathbf S_{\textrm{rel}}$\index{.srel@$\mathbf  S_{\textrm  {rel}}$}. We may
 also tweak the parameter
 \texttt{min\_count}\index{.mincount@\texttt  {min\_count}|emph}
 available in the C and Python implementations of Word2vec\index{Word2vec}; the
@@ -1865,7 +1870,7 @@ default value of this parameter is five. This parameter causes only those terms
 that occur sufficiently often to be embedded in $\mathbb X$\index{.x@$\mathbb X$}.
 If we consider the inner product to be $0$ for terms missing from $\mathbb
 X$\index{.x@$\mathbb X$}, then higher values of this parameter decrease the
-density of $S_{\textrm{rel}}$ as well. Note, however, that the decrease in
+density of $\mathbf S_{\textrm{rel}}$ as well. Note, however, that the decrease in
 density produced by these parameters depends on the dataset and no improved
 computational complexity is guaranteed.
 
