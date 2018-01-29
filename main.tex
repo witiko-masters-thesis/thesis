@@ -2181,11 +2181,10 @@ In this section, I give an overview of the experiments performed on the
 
 \subsection{Language modeling}
 The texts in the datasets were lower-cased and tokenized on white spaces and
-punctuation. Tokens shorter than two characters or longer than 15~characters
-were removed and so were English stopwords. Images and \abbr{URL}s were
+punctuation. English stopwords were removed. Images and \abbr{URL}s were
 replaced with special tokens. Notice that I used a slightly different
 model compared to section~\ref{sec:segmentation-language-modeling-segmentation};
-this was in order to more closely mimic the preprocessing steps taken by
+this was to more closely mimic the preprocessing steps taken by
 \textcite{charletdamnati17}.
 
 By default, I used the unannotated subtask~A datasets to built the matrix
