@@ -2113,8 +2113,8 @@ the algebraic dot product. Then let $\mathbf x'$ be the original query vector an
 $\mathbf y'$ the original document vector. Let us first construct $\mathbf x,$
 and $\mathbf y$ as follows:
 \begin{equation*}
-  \mathbf x^{\bm\gamma} = \mathbf x'^{\bm\gamma},\text{ and }
-  \mathbf y^{\bm\gamma} = \frac{\mathbf S\mathbf y'^{\bm\gamma}}{\sqrt{\strut(\mathbf y'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}}.
+  \mathbf x^{\bm\gamma} = \mathbf S\tran\mathbf x'^{\bm\gamma},\text{ and }
+  \mathbf y^{\bm\gamma} = \frac{\mathbf y'^{\bm\gamma}}{\sqrt{\strut(\mathbf y'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}}.
 \end{equation*}
 Then the algebraic dot product between $\mathbf x^{\bm\gamma}$ and $\mathbf
 y^{\bm\gamma}$ comes down to
@@ -2123,7 +2123,9 @@ y^{\bm\gamma}$ comes down to
 \end{equation*}
 Since the query vector $\mathbf x'$ stays constant during the retrieval, the above
 equation produces the same ordering of document vectors $\mathbf y'$ as the soft
-cosine similarity formula from equation~\ref{eq:similarity-soft-cosine}.
+cosine similarity formula from equation~\ref{eq:similarity-soft-cosine}. Note that
+moving $\mathbf S$ from $\mathbf x^{\bm\gamma}$ to the numerator of
+$\mathbf y^{\bm\gamma}$ would cause an increase in density of all document vectors.
 
 Let us now construct $\mathbf x$, and $\mathbf y$ as follows:
 \begin{equation*}
@@ -2210,8 +2212,8 @@ $\theta_3\in\{0,0.2,0.4,0.6,0.8,1\}$\index{.h3@$\theta _3$}.  For both matrices,
 I only varied a single parameter and kept the remaining parameters at their
 default values. I then evaluated each resulting model on the subtask~B dev and
 test datasets, and I plotted the matrix densities against the achieved
-\abbr{MAP}\index{map@\abbr {MAP}} scores to show the trade-off between the
-sparsity of $\mathbf S$\index{.s@$\mathbf S$} and the model quality.
+\abbr{MAP}\index{map@\abbr {MAP}} scores to show the trade-off between
+sparsity of $\mathbf S$\index{.s@$\mathbf S$} and model quality.
 
 \subsection{Other configurations}
 Apart from the models constructed for the
