@@ -2147,7 +2147,7 @@ vector. Then we will construct $\mathbf x$ and $\mathbf y$ expressed in a
 non-orthogonal normalized basis $\bm\gamma'$\index{.c'@$\bm\gamma'$|emph} of
 $\mathbb{R}^{n+1}$ as follows:
 \begin{equation*}
-  \mathbf x^{\bm\gamma'} = \left[\begin{array}{c}\frac{\mathbf S\tran\mathbf x'^{\bm\gamma}}{\sqrt{((\mathbf x'^{\bm\gamma})\tran\mathbf S)\tran(\mathbf x'^{\bm\gamma})\tran\mathbf S}} \\ 0\end{array}\right],\text{ and }
+  \mathbf x^{\bm\gamma'} = \left[\begin{array}{c}\frac{\mathbf S\tran\mathbf x'^{\bm\gamma}}{\sqrt{(\mathbf S\tran(\mathbf x'^{\bm\gamma}))\tran(\mathbf S\tran\mathbf x'^{\bm\gamma})}} \\ 0\end{array}\right],\text{ and }
   \mathbf y^{\bm\gamma'} = \left[\begin{array}{c}\mathbf z^{\bm\gamma} \\ \sqrt{1-(\mathbf z^{\bm\gamma})\tran\mathbf z^{\bm\gamma}}\end{array}\right],
 \end{equation*}
 where $\mathbf z^{\bm\gamma} = \mathbf y'^{\bm\gamma} / \sqrt{(\mathbf y'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}$.
@@ -2157,9 +2157,9 @@ similarity} between $\mathbf x^{\bm\gamma'}$ and $\mathbf y^{\bm\gamma'}$ comes
 down to the algebraic dot product:
 \begin{align*}
   (\mathbf x^{\bm\gamma'})\tran\mathbf y^{\bm\gamma'}
-  &= \left(\frac{\mathbf S\tran\mathbf x'^{\bm\gamma}}{\sqrt{((\mathbf x'^{\bm\gamma})\tran\mathbf S)\tran(\mathbf x'^{\bm\gamma})\tran\mathbf S}}\right)\tran
+  &= \left(\frac{\mathbf S\tran\mathbf x'^{\bm\gamma}}{\sqrt{(\mathbf S\tran(\mathbf x'^{\bm\gamma}))\tran(\mathbf S\tran\mathbf x'^{\bm\gamma})}}\right)\tran
   \frac{\mathbf y'^{\bm\gamma}}{\sqrt{(\mathbf y'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}} = \\
-  &= \frac{(\mathbf x'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}{\sqrt{((\mathbf x'^{\bm\gamma})\tran\mathbf S)\tran(\mathbf x'^{\bm\gamma})\tran\mathbf S}\sqrt{(\mathbf y'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}}
+  &= \frac{(\mathbf x'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}{\sqrt{(\mathbf S\tran(\mathbf x'^{\bm\gamma}))\tran(\mathbf S\tran\mathbf x'^{\bm\gamma})}\sqrt{(\mathbf y'^{\bm\gamma})\tran\mathbf S\mathbf y'^{\bm\gamma}}}
 \end{align*}
 Since the query vector $\mathbf x'$ stays constant during the retrieval, the above
 equation produces the same ordering of document vectors $\mathbf y'$ as the soft
