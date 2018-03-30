@@ -1371,7 +1371,7 @@ killed, i', the, Capitol. Then the corresponding vectors $\mathbf v_1$ and
 $\mathbf v_2$ would have the following coordinates in basis $\bm\alpha$:
 \begin{align*}
   \mathbf v_1^{\bm\alpha} &= [1\:1\:1\:1\:1\:1\:0\:0\:0\:0\:0\:0\:0\:0]\tran, \text{and} \\
-  \mathbf v_2^{\bm\alpha} &= [0\:0\:0\:1\:1\:0\:1\:1\:1\:1\:1\:1\:1\:1]\tran.
+  \mathbf v_2^{\bm\alpha} &= [0\:0\:0\:1\:1\:0\:2\:1\:1\:1\:1\:1\:1\:1]\tran.
 \end{align*}
 
 Since rare words are more important for describing a document than frequent
@@ -1389,7 +1389,7 @@ $d_1$ and $d_2$:
   v_2\Vert\rangle_{\mathbb{R}^{14}} = \Big(\!(\mathbf v_1^{\bm\alpha})\tran \mathbf v_2^{\bm\alpha}\Big) \Big/ \!
   \left(\!\sqrt{\mathbf (\mathbf v_1^{\bm\alpha})\tran \mathbf
   v_1^{\bm\alpha}}\sqrt{\mathbf (\mathbf v_2^{\bm\alpha})\tran \mathbf
-  v_2^{\bm\alpha}}\right)\approx0.26.
+  v_2^{\bm\alpha}}\right)\approx0.23.
 \end{equation*}
 Intuitively, this underestimates the true similarity between $d_1$ and $d_2$.
 If we assume $\bm\alpha$\index{.a@$\bm\alpha$} is non-orthonormal, and that the terms Anthony, Julius, and
@@ -1411,7 +1411,7 @@ Then $\mathbf v_1$ and $\mathbf v_2$ would have the following coordinates in
 $\bm\delta$\index{.d@$\bm\delta$}:
 \begin{align*}
   \mathbf v_1^{\bm\delta} &= \mathbf W \mathbf v_1^{\bm\alpha} = [1\:5\:1\:5\:5\:1\:0\:0\:0\:0\:0\:0\:0\:0]\tran, \text{and} \\
-  \mathbf v_2^{\bm\delta} &= \mathbf W \mathbf v_2^{\bm\alpha} = [0\:0\:0\:5\:5\:0\:1\:1\:1\:1\:1\:1\:1\:1]\tran,
+  \mathbf v_2^{\bm\delta} &= \mathbf W \mathbf v_2^{\bm\alpha} = [0\:0\:0\:5\:5\:0\:2\:1\:1\:1\:1\:1\:1\:1]\tran,
 \end{align*}
 and our inner product would change to
 \begin{multline*}
@@ -1423,7 +1423,7 @@ and our inner product would change to
   {}= \Big(\!(\mathbf W\mathbf v_1^{\bm\alpha})\tran (\mathbf W\mathbf v_2^{\bm\alpha})\!\Big) \Big/\!
     \left(\!\!\sqrt{\mathbf (\mathbf W\mathbf v_1^{\bm\alpha})\tran (\mathbf W\mathbf
     v_1^{\bm\alpha})}\sqrt{(\mathbf W\mathbf v_2^{\bm\alpha})\tran (\mathbf W\mathbf
-    v_2^{\bm\alpha})}\right)\approx0.89.
+    v_2^{\bm\alpha})}\right)\approx0.72.
 \end{multline*}
 Intuitively, this comes closer to the true similarity between $d_1$ and $d_2$.
 
